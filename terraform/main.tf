@@ -19,7 +19,7 @@ resource azurerm_storage_account web {
   account_kind = "StorageV2"
   account_tier = "Standard"
   account_replication_type = "LRS"
-  name = random_string.random.result
+  name = lower(random_string.random.result)
   location = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
 }
