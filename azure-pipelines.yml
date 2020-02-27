@@ -23,7 +23,7 @@ steps:
     backendAzureRmResourceGroupName: 'jeftfstate'
     backendAzureRmStorageAccountName: 'jeftfstate'
     backendAzureRmContainerName: 'tfstate'
-    backendAzureRmKey: 'tfoutputinado'
+    backendAzureRmKey: 'tfoutputinado.tfstate'
 - task: TerraformTaskV1@0
   inputs:
     provider: 'azurerm'
