@@ -42,10 +42,10 @@ steps:
       terraform output -json | ../tf-to-ado.sh
 - task: Bash@3
   displayName: "Test TF output in this job"
+  env:
+    TF_OUTPUT_TEST: $(TF_OUTPUT_TEST)
   inputs:
     targetType: inline
-    env:
-      - TF_OUTPUT_TEST: $(TF_OUTPUT_TEST)
     script: |
       set -e
 
