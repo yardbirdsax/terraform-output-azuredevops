@@ -55,7 +55,7 @@ steps:
           exit 1
         fi
       }
-      test "$1"
+      test "$TF_OUTPUT_TEST"
 - task: TerraformTaskV1@0
   displayName: "Destroy resources"
   inputs:
