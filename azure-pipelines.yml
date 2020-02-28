@@ -45,6 +45,16 @@ steps:
   inputs:
     targetType: inline
     script: |
-      echo $(TF_STORAGE_ACCOUNT_NAME)
+      if [[ "$(TF_OUTPUT_TEST)" -ne "MyTestValue" ]]
+      then
+        echo "Value of variable $(TF_OUTPUT_TEST) did not match expected value."
+        exit 1
+      fi
+- task: TerraformTaskV1@0
+  displayName: "Destroy resources"
+  inputs:
+    command: 'destroy'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    environmentServiceNameAzureRM: 'AzureSubscription'
 
     

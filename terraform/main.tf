@@ -32,5 +32,6 @@ output ado_output {
   value = {
     TF_STORAGE_ACCOUNT_NAME = azurerm_storage_account.web.name
     TF_STORAGE_ACCOUNT_KEY  = azurerm_storage_account.web.primary_access_key
+    TF_OUTPUT_TEST          = "MyTestValue"
   }
 }
