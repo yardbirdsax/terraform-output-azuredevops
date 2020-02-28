@@ -45,6 +45,7 @@ steps:
   inputs:
     targetType: inline
     script: |
+      echo $(TF_OUTPUT_TEST)
       if [[ "$(TF_OUTPUT_TEST)" -ne "MyTestValue" ]]
       then
         echo "Value of variable $(TF_OUTPUT_TEST) did not match expected value."
