@@ -44,6 +44,8 @@ steps:
   displayName: "Test TF output in this job"
   inputs:
     targetType: inline
+    env:
+      - TF_OUTPUT_TEST: $(TF_OUTPUT_TEST)
     script: |
       set -e
 
@@ -55,7 +57,7 @@ steps:
           exit 1
         fi
       }
-      test "$(TF_OUTPUT_TEST)"
+      test "$TF_OUTPUT_TEST"
 - task: TerraformTaskV1@0
   displayName: "Destroy resources"
   inputs:
