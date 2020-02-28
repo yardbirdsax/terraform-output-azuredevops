@@ -12,9 +12,11 @@ pool:
 
 steps:
 - task: TerraformInstaller@0
+  displayName: Install Terraform
   inputs:
     terraformVersion: '0.12.20'
 - task: TerraformTaskV1@0
+  displayName: Initialize Terraform
   inputs:
     provider: 'azurerm'
     command: 'init'
@@ -25,18 +27,21 @@ steps:
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'tfoutputinado.tfstate'
 - task: TerraformTaskV1@0
+  displayName: Terraform Apply
   inputs:
     provider: 'azurerm'
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
     environmentServiceNameAzureRM: 'AzureSubscription'
 - task: Bash@3
+  displayName: Convert Terraform output to pipeline variables
   inputs:
     workingDirectory: "./terraform"
     targetType: inline
     script: |
       terraform output -json | ../tf-to-ado.sh
 - task: Bash@3
+  displayName: "Test TF output in this job"
   inputs:
     targetType: inline
     script: |
