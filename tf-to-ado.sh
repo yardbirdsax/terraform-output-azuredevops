@@ -22,4 +22,5 @@ for key in $KEYS
 do
   VALUE=`echo $OUTPUT | jq ".value.${key}" -r`
   echo "##vso[task.setvariable variable=${key};isOutput=true]$VALUE"
+  echo "##vso[task.setvariable variable=${key}]$VALUE"
 done
