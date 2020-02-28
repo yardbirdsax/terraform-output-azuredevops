@@ -49,13 +49,13 @@ steps:
 
       test() {
         echo $1
-        if [[ "$1" -ne "MyTestValue" ]]
+        if [[ "$1" -ne "MyTestValue" || -z $1 ]]
         then
           echo "Value of variable $1 did not match expected value."
           exit 1
         fi
       }
-      test "$TF_OUTPUT_TEST"
+      test "$1"
 - task: TerraformTaskV1@0
   displayName: "Destroy resources"
   inputs:
