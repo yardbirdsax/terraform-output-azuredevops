@@ -48,14 +48,14 @@ steps:
       set -e
 
       test() {
-        echo $(TF_OUTPUT_TEST)
-        if [[ "$(TF_OUTPUT_TEST)" -ne "MyTestValue" ]]
+        echo $1
+        if [[ "$1" -ne "MyTestValue" ]]
         then
-          echo "Value of variable $(TF_OUTPUT_TEST) did not match expected value."
+          echo "Value of variable $1 did not match expected value."
           exit 1
         fi
       }
-      test
+      test "$(TF_OUTPUT_TEST)"
 - task: TerraformTaskV1@0
   displayName: "Destroy resources"
   inputs:

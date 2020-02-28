@@ -1,0 +1,1 @@
+[![Build Status](https://dev.azure.com/yardbirdsax/Terraform%20Output%20in%20Azure%20DevOps/_apis/build/status/yardbirdsax.terraform-output-azuredevops?branchName=master)](https://dev.azure.com/yardbirdsax/Terraform%20Output%20in%20Azure%20DevOps/_build/latest?definitionId=4&branchName=master)
