@@ -30,3 +30,16 @@ steps:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
     environmentServiceNameAzureRM: 'AzureSubscription'
+- task: Bash@3
+  inputs:
+    workingDirectory: "./terraform"
+    targetType: inline
+    script: |
+      terraform output -json | ../tf-to-ado.sh
+- task: Bash@3
+  inputs:
+    targetType: inline
+    script: |
+      echo $(TF_STORAGE_ACCOUNT_NAME)
+
+    

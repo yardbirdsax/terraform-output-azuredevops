@@ -1,4 +1,10 @@
-OUTPUT=`terraform output -json | jq '.ado_output'`
+#!/usr/bin/env bash
+
+set -e
+
+echo $1
+
+OUTPUT=`cat - | jq '.ado_output'`
 KEYS=`echo $OUTPUT | jq '.value | keys[]' -r`
 for key in $KEYS
 do
