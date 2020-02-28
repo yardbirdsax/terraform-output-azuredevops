@@ -45,6 +45,7 @@ steps:
   inputs:
     targetType: inline
     script: |
+      set -e
       echo $(TF_OUTPUT_TEST)
       if [[ "$(TF_OUTPUT_TEST)" -ne "MyTestValue" ]]
       then
